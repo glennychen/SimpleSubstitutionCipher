@@ -1,7 +1,7 @@
 title: A simple substitution cipher
 description: A simple substitution cipher demo (inspired by Ron's job story while playing pickleball)
 author: glenn chen
-theme: minima
+theme: jekyll-theme-minimal
 
 # Optional settings
 markdown: kramdown
