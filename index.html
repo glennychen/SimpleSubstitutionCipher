@@ -126,22 +126,24 @@ Indiana is home to professional sports teams, including the NFL's Indianapolis C
     })
 </script>
 <script>
-    const textarea = $0.querySelector('textarea');
-let data = {};
-if (textarea) {
-  await setElementStyles(textarea, { 'font-size': '1.4em' });
-  const computedFontSize = window.getComputedStyle(textarea)['font-size'];
-  data = {
-    success: true,
-    computedFontSize: computedFontSize
-  };
+const textareas = Array.from($0.querySelectorAll('textarea'));
+const data = {
+  textareaCount: textareas.length
+};
+if (textareas.length > 0) {
+  const styleElement = document.createElement('style');
+  styleElement.textContent = `
+    @media (max-width: 768px) {
+      textarea {
+        font-size: 1.5em !important; /* Using !important to ensure it overrides existing styles */
+      }
+    }
+  `;
+  document.head.appendChild(styleElement);
+  data.styleApplied = true;
 } else {
-  data = {
-    success: false,
-    message: 'No textarea element found within the body.'
-  };
+  data.styleApplied = false;
 }
-return data;
 </script>
 <script src="/static/django-browser-reload/reload-listener.js" data-worker-script-path="/static/django-browser-reload/reload-worker.js" data-events-path="/__reload__/events/" defer></script></body>
 
