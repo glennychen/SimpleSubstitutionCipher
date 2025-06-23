@@ -1,0 +1,13 @@
+title: A simple substitution cipher
+description: A simple substitution cipher demo (inspired by Ron's job story while playing pickleball)
+author: glenn chen
+theme: minima
+
+# Optional settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Social links
+github_username: glennychen
