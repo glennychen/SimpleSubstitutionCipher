@@ -1,0 +1,86 @@
+<html>
+<head>
+    <style>
+        /* Style for both textareas */
+        .plaintext textarea,
+        .ciphertext textarea {
+            width: 95%; /* Take up most of the container width */
+            height: 200px; /* Set a fixed height, adjust as needed */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            margin-bottom: 10px; /* Add some space below the textareas */
+            padding: 10px; /* Add some internal padding */
+        }
+
+        /* Optional: Add some media queries for larger screens if you want different sizes */
+        @media (min-width: 768px) {
+            .plaintext textarea,
+            .ciphertext textarea {
+                width: 80%; /* Wider on larger screens */
+                height: 300px; /* Taller on larger screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+<h1> A simple substitution cipher demo (inspired by Ron's job story while playing pickleball)</h1>
+<div class="plaintext">
+     <textarea>
+ Indiana is a state in the Midwestern region of the United States. It borders Lake Michigan to the northwest, Michigan to the north and northeast, Ohio to the east, the Ohio River and Kentucky to the south and southeast, and the Wabash River and Illinois to the west. Nicknamed "the Hoosier State", Indiana is the 38th-largest by area and the 17th-most populous of the 50 states. Its capital and largest city is Indianapolis. Indiana was admitted to the Union as the 19th state on December 11, 1816.
+
+Indigenous resistance to American settlement was broken with defeat of the Tecumseh's confederacy in 1813. The new settlers were primarily Americans of British ancestry from the eastern seaboard and the Upland South, and Germans. After the Civil War, in which the state fought for the Union, natural gas attracted heavy industry and new European immigrants to its northern counties. In the first half of the 20th century, northern and central sections experienced a boom in goods manufacture and automobile production. Southern Indiana remained largely rural.
+
+After the rise and fall of the Klan in the 1920s, the state swung politically from the Republican to Democratic Party in the New Deal 1930s. Today, with a decades-long record of returning Republican majorities, Indiana is counted a "Red state".
+
+Indiana has a diverse economy with a gross state product in 2023 of 404.3 billion. Indianapolis is at the center of the state's largest metropolitan area, with a population of over two million. The Fort Wayne metro area follows with a population of 645,000.
+
+Indiana is home to professional sports teams, including the NFL's Indianapolis Colts, the NBA's Indiana Pacers, and the WNBA's Indiana Fever. The state also hosts several notable competitive events, such as the Indianapolis 500, held at Indianapolis Motor Speedway.
+     </textarea>
+
+</div>
+
+
+<div class="cipher">
+ Rotate every English Character by <input type="number" value="1"> character(s)<button type="button">Encrypt</button>
+</div>
+
+<div class="ciphertext">
+     <textarea></textarea>
+</div>
+
+<i>No demo for how to decrypt the encrypted message yet. It is left for...whoever is interested in doing so.</i>
+
+<script>
+    var plaintext = document.querySelector('.plaintext textarea');
+    var ciphertext = document.querySelector('.ciphertext textarea');
+    var rotateBy = document.querySelector('.cipher input');
+
+    var submit = document.querySelector('.cipher button');
+    submit.addEventListener('click', function(){
+        var text = plaintext.value;
+        var rotationAmount = parseInt(rotateBy.value);
+        var cipher = '';
+        for (var i = 0; i < text.length; i++) {
+            var charCode = text.charCodeAt(i);
+            var rotatedCharCode = charCode; // Initialize with original code
+
+            // Check if it's an uppercase letter (A-Z)
+            if (charCode >= 65 && charCode <= 90) {
+                rotatedCharCode = ((charCode - 65 + rotationAmount) % 26) + 65; // Apply rotation and wrap for uppercase
+            }
+            // Check if it's a lowercase letter (a-z)
+            else if (charCode >= 97 && charCode <= 122) {
+                rotatedCharCode = ((charCode - 97 + rotationAmount) % 26) + 97; // Apply rotation and wrap for lowercase
+            }
+            // If it's not an English letter, keep the original character
+            // (The code currently skips non-letters, but including them is more typical for a cipher)
+
+            cipher += String.fromCharCode(rotatedCharCode); // Add the original or rotated character
+            console.log(String.fromCharCode(rotatedCharCode));
+        }
+        ciphertext.value = cipher;
+    })
+</script>
+</body>
+
+</html>
