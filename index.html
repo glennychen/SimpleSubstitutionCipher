@@ -17,7 +17,7 @@
             box-sizing: border-box; /* Include padding and border in the element's total width and height */
             margin-bottom: 10px; /* Add some space below the textareas */
             padding: 10px; /* Add some internal padding */
-            font-size: 1.2em; /* <-- Apply larger font size here for all screens */
+            font-size: 1.2em; /* Apply larger font size here for all screens */
         }
 
         /* Style for the cipher input and button */
@@ -38,7 +38,7 @@
             .ciphertext textarea {
                 width: 80%; /* Wider on larger screens */
                 height: 300px; /* Taller on larger screens */
-                font-size: 1em; /* <-- Optionally set a different font size for larger screens */
+                font-size: 1em; /* Optionally set a different font size for larger screens */
             }
 
             .cipher input,
@@ -90,21 +90,28 @@ Indiana is home to professional sports teams, including the NFL's Indianapolis C
 
          if (isNaN(rotationAmount)) {
             console.error("Invalid rotation amount");
+            // Optionally, display an error message to the user
             return;
         }
 
+        // Handle negative rotation amounts correctly
+        rotationAmount = (rotationAmount % 26 + 26) % 26;
+
+
         for (var i = 0; i < text.length; i++) {
             var charCode = text.charCodeAt(i);
-            var rotatedCharCode = charCode;
+            var rotatedCharCode = charCode; // Initialize with original code
 
             // Check if it's an uppercase letter (A-Z)
             if (charCode >= 65 && charCode <= 90) {
-                rotatedCharCode = ((charCode - 65 + rotationAmount) % 26) + 65;
+                rotatedCharCode = ((charCode - 65 + rotationAmount) % 26) + 65; // Apply rotation and wrap for uppercase
             }
             // Check if it's a lowercase letter (a-z)
             else if (charCode >= 97 && charCode <= 122) {
-                rotatedCharCode = ((charCode - 97 + rotationAmount) % 26) + 97;
-            } else {
+                rotatedCharCode = ((charCode - 97 + rotationAmount) % 26) + 97; // Apply rotation and wrap for lowercase
+            }
+            // If it's not an English letter, keep the original character
+            else {
                  rotatedCharCode = charCode; // Keep non-letter characters
             }
 
