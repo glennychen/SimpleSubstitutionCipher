@@ -1,6 +1,6 @@
 <html>
 <head>
-   <style>
+    <style>
         /* Basic body styling for better readability */
         body {
             font-size: 1.1em; /* Larger base font size */
@@ -80,34 +80,41 @@ Indiana is home to professional sports teams, including the NFL's Indianapolis C
 <script>
     var plaintext = document.querySelector('.plaintext textarea');
     var ciphertext = document.querySelector('.ciphertext textarea');
-    var rotateBy = document.querySelector('.cipher input');
+    var rotateByInput = document.querySelector('.cipher input');
 
     var submit = document.querySelector('.cipher button');
     submit.addEventListener('click', function(){
         var text = plaintext.value;
-        var rotationAmount = parseInt(rotateBy.value);
+        var rotationAmount = parseInt(rotateByInput.value);
         var cipher = '';
+
+         if (isNaN(rotationAmount)) {
+            console.error("Invalid rotation amount");
+            return;
+        }
+
         for (var i = 0; i < text.length; i++) {
             var charCode = text.charCodeAt(i);
-            var rotatedCharCode = charCode; // Initialize with original code
+            var rotatedCharCode = charCode;
 
             // Check if it's an uppercase letter (A-Z)
             if (charCode >= 65 && charCode <= 90) {
-                rotatedCharCode = ((charCode - 65 + rotationAmount) % 26) + 65; // Apply rotation and wrap for uppercase
+                rotatedCharCode = ((charCode - 65 + rotationAmount) % 26) + 65;
             }
             // Check if it's a lowercase letter (a-z)
             else if (charCode >= 97 && charCode <= 122) {
-                rotatedCharCode = ((charCode - 97 + rotationAmount) % 26) + 97; // Apply rotation and wrap for lowercase
+                rotatedCharCode = ((charCode - 97 + rotationAmount) % 26) + 97;
+            } else {
+                 rotatedCharCode = charCode; // Keep non-letter characters
             }
-            // If it's not an English letter, keep the original character
-            // (The code currently skips non-letters, but including them is more typical for a cipher)
 
-            cipher += String.fromCharCode(rotatedCharCode); // Add the original or rotated character
+
+            cipher += String.fromCharCode(rotatedCharCode);
             console.log(String.fromCharCode(rotatedCharCode));
         }
         ciphertext.value = cipher;
     })
 </script>
-</body>
+<script src="/static/django-browser-reload/reload-listener.js" data-worker-script-path="/static/django-browser-reload/reload-worker.js" data-events-path="/__reload__/events/" defer></script></body>
 
 </html>
