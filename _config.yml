@@ -5,9 +5,9 @@ theme: jekyll-theme-minimal
 
 # Optional settings
 markdown: kramdown
+remote_theme: pages-themes/minimal@v0.2.0
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
+  - jekyll-remote-theme
 
 # Social links
 github_username: glennychen
