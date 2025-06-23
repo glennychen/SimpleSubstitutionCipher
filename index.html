@@ -1,3 +1,4 @@
+``html
 <!DOCTYPE html>
 <html><head>
     <style>
@@ -74,18 +75,4 @@ Indiana is home to professional sports teams, including the NFL's Indianapolis C
                 rotatedCharCode = ((charCode - 65 + rotationAmount) % 26) + 65; // Apply rotation and wrap for uppercase
             }
             // Check if it's a lowercase letter (a-z)
-            else if (charCode >= 97 && charCode <= 122) {
-                rotatedCharCode = ((charCode - 97 + rotationAmount) % 26) + 97; // Apply rotation and wrap for lowercase
-            }
-            // If it's not an English letter, keep the original character
-            // (The code currently skips non-letters, but including them is more typical for a cipher)
-
-            cipher += String.fromCharCode(rotatedCharCode); // Add the original or rotated character
-            console.log(String.fromCharCode(rotatedCharCode));
-        }
-        ciphertext.value = cipher;
-    })
-</script>
-<script src="/static/django-browser-reload/reload-listener.js" data-worker-script-path="/static/django-browser-reload/reload-worker.js" data-events-path="/__reload__/events/" defer=""></script>
-
-</body></html>
+            else if (charCode >= 97 && charCode <= 122) {\n rotatedCharCode = ((charCode - 97 + rotationAmount) % 26) + 97; // Apply rotation and wrap for lowercase\n }\n // If it's not an English letter, keep the original character\n // (The code currently skips non-letters, but including them is more typical for a cipher)\n\n cipher += String.fromCharCode(rotatedCharCode); // Add the original or rotated character\n console.log(String.fromCharCode(rotatedCharCode));\n }\n ciphertext.value = cipher;\n    })\n</script>\n<script src=\"/static/django-browser-reload/reload-listener.js\" data-worker-script-path=\"/static/django-browser-reload/reload-worker.js\" data-events-path=\"/__reload__/events/\" defer=\"\"></script>\n\n</body></html>
