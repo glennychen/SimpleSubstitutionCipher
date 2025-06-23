@@ -1,6 +1,14 @@
 <html>
 <head>
-    <style>
+   <style>
+        /* Basic body styling for better readability */
+        body {
+            font-size: 1.1em; /* Larger base font size */
+            line-height: 1.5; /* Add some spacing between lines */
+            font-family: sans-serif; /* Use a common sans-serif font */
+            margin: 15px; /* Add some margin around the content */
+        }
+
         /* Style for both textareas */
         .plaintext textarea,
         .ciphertext textarea {
@@ -9,14 +17,33 @@
             box-sizing: border-box; /* Include padding and border in the element's total width and height */
             margin-bottom: 10px; /* Add some space below the textareas */
             padding: 10px; /* Add some internal padding */
+            font-size: 1.2em; /* Larger font size specifically for textareas */
+        }
+
+        /* Style for the cipher input and button */
+        .cipher input,
+        .cipher button {
+            font-size: 1em; /* Keep input and button font size relative to body */
+            padding: 5px; /* Add some padding */
+            margin-right: 5px; /* Add space between input and button */
         }
 
         /* Optional: Add some media queries for larger screens if you want different sizes */
         @media (min-width: 768px) {
+            body {
+                font-size: 1em; /* Slightly smaller base font size on larger screens */
+            }
+
             .plaintext textarea,
             .ciphertext textarea {
                 width: 80%; /* Wider on larger screens */
                 height: 300px; /* Taller on larger screens */
+                font-size: 1em; /* Smaller font size in textareas on larger screens */
+            }
+
+            .cipher input,
+            .cipher button {
+                font-size: 1em;
             }
         }
     </style>
