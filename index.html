@@ -125,6 +125,24 @@ Indiana is home to professional sports teams, including the NFL's Indianapolis C
         ciphertext.value = cipher;
     })
 </script>
+<script>
+    const textarea = $0.querySelector('textarea');
+let data = {};
+if (textarea) {
+  await setElementStyles(textarea, { 'font-size': '1.4em' });
+  const computedFontSize = window.getComputedStyle(textarea)['font-size'];
+  data = {
+    success: true,
+    computedFontSize: computedFontSize
+  };
+} else {
+  data = {
+    success: false,
+    message: 'No textarea element found within the body.'
+  };
+}
+return data;
+</script>
 <script src="/static/django-browser-reload/reload-listener.js" data-worker-script-path="/static/django-browser-reload/reload-worker.js" data-events-path="/__reload__/events/" defer></script></body>
 
 </html>
